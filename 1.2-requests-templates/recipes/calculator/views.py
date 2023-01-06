@@ -50,7 +50,7 @@ def calc(request, dish=None):
         dish = request.GET.get('dish', 'buter')
     servings = request.GET.get('servings', 1)
     print(DATA[dish])
-    recipe = { ingredient: amount*int(servings) for ingredient, amount in DATA[dish].items() }
+    recipe = { ingredient: round(amount*int(servings), 2) for ingredient, amount in DATA[dish].items() }
     context = {
         'recipe': recipe,
         'range': range(1, 11),
