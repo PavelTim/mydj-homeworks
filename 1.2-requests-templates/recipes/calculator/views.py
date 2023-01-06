@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 
 DATA = {
     'omlet': {
@@ -28,3 +29,29 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+
+def home_view(request):
+    template_name = 'calculator/home.html'
+
+    pages = {
+        'Omlet': reverse('omlet'),
+        'Pasta': reverse('pasta'),
+        'Buter': reverse('buter')
+    }
+
+    context = {
+        'pages': pages
+    }
+    return render(request, template_name, context)
+
+def calc(request, dish=None):
+    if dish is None:
+        dish = request.GET.get('dish', 'buter')
+    servings = request.GET.get('servings', 1)
+    print(DATA[dish])
+    recipe = { ingredient: amount*int(servings) for ingredient, amount in DATA[dish].items() }
+    context = {
+      'recipe': recipe
+    }
+    return render(request, 'calculator/index.html', context)
