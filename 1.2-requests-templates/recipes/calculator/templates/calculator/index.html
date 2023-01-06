@@ -10,6 +10,9 @@
 {% empty %}
     <p>Такого рецепта не знаю :(</p>
 {% endfor %}
+{% for i in range %}
+    <a href="/{{dish}}/?servings={{i}}">{{i}}</a>
+{% endfor %}
 <a href="/">Menu</a>
 </body>
 </html>

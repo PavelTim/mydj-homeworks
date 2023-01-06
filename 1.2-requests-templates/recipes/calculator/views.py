@@ -52,6 +52,8 @@ def calc(request, dish=None):
     print(DATA[dish])
     recipe = { ingredient: amount*int(servings) for ingredient, amount in DATA[dish].items() }
     context = {
-      'recipe': recipe
+        'recipe': recipe,
+        'range': range(1, 11),
+        'dish': dish
     }
     return render(request, 'calculator/index.html', context)
