@@ -12,15 +12,20 @@
                 {% for book in books %}
                 <h2>{{ book.name }}</h2>
                 <p>Автор: {{ book.author }}</p>
-                <p>
-                    Дата публикации:
-                    <a href="/books/{{ book.pub_date|date:'Y-m-d' }}/">
-                        {{ book.pub_date }}
-                    </a>
-                </p>
+                <p>Дата публикации: {{ book.pub_date|date:'d-m-Y' }}</p>
                 {% endfor %}
             </div>
 
+
+
+        </div>
+        <div class="book col-md-4">
+            {% if page.has_previous %}
+            <a href="/books/{{ page.previous_page_number|date:'Y-m-d' }}/">Назад</a>
+            {% endif %}
+            {% if page.has_next %}
+            <a href="/books/{{ page.previous_page_number|date:'Y-m-d' }}/">Вперед</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

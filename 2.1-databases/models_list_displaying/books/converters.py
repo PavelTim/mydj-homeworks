@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.urls import register_converter
 
 
 class DateConverter:
@@ -10,3 +11,6 @@ class DateConverter:
 
    def to_url(self, value: datetime) -> str:
        return value.strftime(self.format)
+
+
+register_converter(DateConverter, 'date')
