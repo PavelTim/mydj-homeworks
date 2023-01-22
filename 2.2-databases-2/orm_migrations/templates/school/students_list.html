@@ -6,7 +6,17 @@
 <div class="row">
   <ul>
   {% for student in object_list %}
-    <li>{{ student.name }} {{ student.group }} <br> Преподаватель: {{ student.teacher.name }} {{ student.teacher.subject }}</li>
+    <li>{{ student.name }} {{ student.group }}
+      <br> Преподаватели:
+      {% for object in student.lessons.all %}
+     <ul>{{ object.teachers.name }} {{ object.teachers.subject }}</ul>
+      {% endfor %}
+        <br> Преподаватели (teachers):
+        {% for teacher in student.teachers.all %}
+     <ul>{{ teacher.name }} {{ teacher.subject }}</ul>
+      {% endfor %}
+
+    </li>
   {% endfor %}
   </ul>
 </div>
