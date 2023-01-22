@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',       # check for django-debug-toolbar
     'school',
+
+    'debug_toolbar'                                             # django-debug-toolbar
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',          # django-debug-toolbar
+
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -126,7 +131,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'                   # check for django-debug-toolbar
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -134,4 +139,7 @@ try:
     from .settings_local import *
 except ImportError:
     pass
+
+#                                       django-debug-toolbar
+INTERNAL_IPS = ['127.0.0.1']
 
