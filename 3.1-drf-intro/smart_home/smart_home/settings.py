@@ -1,3 +1,4 @@
+
 """
 Django settings for smart_home project.
 
@@ -13,6 +14,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from smart_home.my_password_26 import MYPASSWORD
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -38,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework',
+    'rest_framework',   # DRF
 
-    'measurement',
+    'measurement',  # apps
+    # 'measurement.apps.MeasurementConfig', # так тоже можно
 ]
 
 MIDDLEWARE = [
@@ -83,6 +87,9 @@ DATABASES = {
         'NAME': 'netology_smart_home',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+
+        'USER': 'postgres',
+        "PASSWORD": MYPASSWORD,
     }
 }
 

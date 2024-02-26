@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User   # лекция!!!
 from django.core.validators import MinValueValidator
 from django.db import models
 
@@ -33,3 +34,14 @@ class StockProduct(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(0)],
     )
+
+
+
+
+
+
+
+
+
+
+
